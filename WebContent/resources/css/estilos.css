@@ -1,0 +1,48 @@
+/* Define o estilo para o contêiner do formulário */
+.form-container {
+	width: 80%;
+    background-color: #f2f2f2; /* Cor de fundo do contêiner */
+    padding: 20px; /* Preenchimento interno */
+    border-radius: 10px; /* Arredondamento das bordas */
+    box-shadow: 0px 0px 10px 0px #888888; /* Sombra para efeito de elevação */
+    margin-left: auto; /* Alinha o formulário à esquerda */
+    margin-right: auto; /* Alinha o formulário à direita */
+}
+
+/* Define o estilo para campos de entrada e seleção dentro do contêiner do formulário */
+.form-container input,
+.form-container select {
+    width: 100%; /* Largura total */
+    padding: 12px 20px; /* Preenchimento */
+    margin: 8px 0; /* Margem */
+    display: inline-block; /* Exibição como bloco inline */
+    border: 1px solid #ccc; /* Borda sólida */
+    border-radius: 4px; /* Arredondamento das bordas */
+    box-sizing: border-box; /* Tamanho total incluindo preenchimento e borda */
+}
+
+/* Define o estilo para botões quando hover (passagem do mouse) */
+.form-container button:hover {
+    background-color: #45a049; /* Cor de fundo ao passar o mouse */
+}
+
+/* Define o estilo para tabelas dentro do contêiner do formulário */
+.form-container .table {
+    margin-top: 20px; /* Margem superior */
+}
+
+/* Define o estilo para campos de entrada de texto */
+.text-input {
+    width: 200px; /* Largura */
+    height: 30px; /* Altura */
+    font-size: 14px; /* Tamanho da fonte */
+    border-radius: 10px; /* Arredondamento das bordas */
+    border: 1px solid #ccc; /* Borda sólida */
+    padding: 5px; /* Preenchimento */
+}
+
+/* Define o estilo para campos de entrada de texto quando em foco */
+.text-input:focus {
+    outline: none; /* Remove contorno */
+    border-color: #007bff; /* Cor da borda quando em foco */
+}

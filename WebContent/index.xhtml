@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"></link>
+	<h:outputStylesheet library="css" name="estilos.css" />
+	<title>Desafio - SINERJI</title>
+</h:head>
+
+<h:body
+	style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+	<div class="container">
+		<div class="form-container">
+			<h:form id="formPessoa">
+				<p:inputText value="#{pessoaBean.pessoa.nome}"
+					styleClass="text-input" placeholder="Nome" />
+
+				<p:inputText value="#{pessoaBean.pessoa.idade}"
+					styleClass="text-input" placeholder="Idade" 
+					style="display: inline-block; width: 10%; margin-right: 6px;"/>
+
+				<p:selectOneMenu value="#{pessoaBean.pessoa.sexo}"
+					styleClass="text-input">
+					<f:selectItem itemLabel="Selecione o sexo" itemValue="" />
+					<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+					<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+				</p:selectOneMenu>
+
+				<p:inputText value="#{pessoaBean.pessoa.endereco.logradouro}"
+					styleClass="text-input" placeholder="Logradaouro" />
+
+				<p:selectOneMenu id="estado"
+					value="#{pessoaBean.pessoa.endereco.estado}"
+					styleClass="text-input">
+					<f:selectItem itemLabel="Selecione o Estado" itemValue="" />
+					<f:selectItems value="#{estadoBean.estados}" var="estado"
+						itemLabel="#{estado.nome}" itemValue="#{estado.sigla}" />
+				</p:selectOneMenu>
+
+				<p:inputText value="#{pessoaBean.pessoa.endereco.cidade}"
+					styleClass="text-input" placeholder="Cidade"
+					style="display: inline-block; width: 25%; margin-right: 6px; margin-left: 6px;" />
+					
+				<p:inputText value="#{pessoaBean.pessoa.endereco.numero}"
+					styleClass="text-input" placeholder="Número"
+					style="display: inline-block; width: 13%; margin-right: 6px;" />
+					
+				<p:inputMask mask="99999-999"
+					value="#{pessoaBean.pessoa.endereco.cep}" placeholder="CEP"
+					styleClass="text-input" style="display: inline-block; width: 15%;" />
+					
+				<br />
+				<div style="display: inline-block;">
+					<h:commandButton value="Salvar" action="#{pessoaBean.salvar}"
+						style="color: #fff; background-color: #007bff; border-color: #007bff;"
+						update="tabelaPessoas" />
+				</div>
+				<div style="display: inline-block; margin-left: 10px;">
+					<h:commandButton value="Cancelar" action="#{pessoaBean.cancelar}"
+						style="color: #fff; background-color: #ff0500; border-color: #ff0500;" />
+				</div>
+
+				<p:outputPanel rendered="#{not empty pessoaBean.pessoas}">
+
+					<div class="table">
+						<h:dataTable id="tabelaPessoas" value="#{pessoaBean.pessoas}"
+							var="p" styleClass="table">
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Nome" />
+								</f:facet>
+								<h:outputText value="#{p.nome}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Idade" />
+								</f:facet>
+								<h:outputText value="#{p.idade}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Sexo" />
+								</f:facet>
+								<h:outputText value="#{p.sexo}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Estado" />
+								</f:facet>
+								<h:outputText value="#{p.endereco.estado}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Cidade" />
+								</f:facet>
+								<h:outputText value="#{p.endereco.cidade}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Logradouro" />
+								</f:facet>
+								<h:outputText value="#{p.endereco.logradouro}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Número" />
+								</f:facet>
+								<h:outputText value="#{p.endereco.numero}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="CEP" />
+								</f:facet>
+								<h:outputText value="#{p.endereco.cep}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Editar" />
+								</f:facet>
+								<h:commandLink value="">
+									<f:setPropertyActionListener value="#{p}"
+										target="#{pessoaBean.pessoa}" />
+									<h:graphicImage value="/resources/img/lapis.png" />
+								</h:commandLink>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Excluir" />
+								</f:facet>
+								<h:commandLink value="" action="#{pessoaBean.remover}">
+									<f:setPropertyActionListener value="#{p}"
+										target="#{pessoaBean.pessoa}" />
+									<h:graphicImage value="/resources/img/excluir.png" />
+								</h:commandLink>
+							</h:column>
+						</h:dataTable>
+					</div>
+				</p:outputPanel>
+			</h:form>
+		</div>
+	</div>
+</h:body>
+</html>
