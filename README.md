@@ -32,3 +32,6 @@ Para usar esse sistema na sua máquina, você deve ter os seguintes programas in
 - o Eclipse foi a IDE utilizada, mas fique a vontade para usar outras IDE, com o IntelliJ ou VSCode de sua preferência.
 
 ## Telas
+![tela-cadastro](https://github.com/mulucas/desafio-tecnico-sinerji/assets/35462940/6a880302-8f2d-4377-b080-01fc809f7a87)
+
+![tela-listagem](https://github.com/mulucas/desafio-tecnico-sinerji/assets/35462940/6e010f6c-beaa-4c69-b3ec-f561f4830e0f)
